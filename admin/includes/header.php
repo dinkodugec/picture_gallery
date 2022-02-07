@@ -1,3 +1,7 @@
+<?php ob_start();  ?>   <!--  ob_start creates outout buffer -->
+<?php include("init.php");  ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
