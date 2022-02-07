@@ -8,7 +8,7 @@
             <small>Subheading</small>
         </h1>
               <!-- <?php
-              if($database->connection){           /*  if connection is ok echo true */
+              if($database->connection){           /*  if connection is ok */
                  echo "true";
               }
               ?> -->
