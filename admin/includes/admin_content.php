@@ -25,6 +25,13 @@
                 $user = User::instantation($found_user);
 
                  echo $user->username; */
+
+                 $users = User::find_all_users();
+
+                 foreach($users as $user){
+                     echo $user->username;
+                 }
+
              ?>
 
 
