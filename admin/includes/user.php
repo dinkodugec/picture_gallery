@@ -34,7 +34,7 @@ class User
         return $result_set;
     }
 
-    public static function instantation()
+    public static function instantation($found_user)
     {
         $the_object= new self;
         $the_object->id = $found_user['id'];
