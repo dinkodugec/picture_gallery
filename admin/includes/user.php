@@ -34,14 +34,22 @@ class User
         return $result_set;
     }
 
-    public static function instantation($found_user)
+    public static function instantation($the_record) // the record from database
     {
-        $the_object= new self;
+         $the_object= new self;
+         /*
         $the_object->id = $found_user['id'];
         $the_object->username = $found_user['username'];
         $the_object->password = $found_user['password'];
         $the_object->first_name = $found_user['first_name'];
         $the_object->last_name = $found_user['last_name'];
+ */
+     foreach($the_record as $the_attribute=>$value){
+         if($the_object->has_the_attribute($the_attribute)){
+            $the_object->the_attribute = $value;
+         }
+     }
+
 
         return $the_object;
     }
