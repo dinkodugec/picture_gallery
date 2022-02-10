@@ -31,7 +31,11 @@ class User
     {
         global $database;
         $result_set = $database->query($sql);
-        return $result_set;
+        $the_object_array = array(); /*   put empty array to get objects in there */
+        while($row = mysqli_fetch_array($result_set)){
+            $the_object_array[] = self::instantation($row);
+        }
+        return $the_object_array;
     }
 
     public static function instantation($the_record) // the record from database
@@ -56,8 +60,8 @@ class User
 
     private function has_the_attribute($the_attribute)
     {
-        $object_properties =  get_object_vars($this);
-        return array_key_exists($the_attribute, $object_properties);
+        $object_properties =  get_object_vars($this);   /*  get_object_vars - built-in function used to get properties of given object */
+        return array_key_exists($the_attribute, $object_properties);  /* The array_key_exists() function checks an array for a specified key, and returns true if the key exists and false if the key does not exist. */
     }
     
 
