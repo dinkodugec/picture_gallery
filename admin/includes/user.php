@@ -21,9 +21,16 @@ class User
     {
         global $database;
         /* $result_set = $database->query("SELECT * FROM users WHERE id = $user_id"); */
-        $result_set = self::find_this_query("SELECT * FROM users WHERE id = $user_id");
-        $found_user = mysqli_fetch_array($result_set);
-        return $found_user;
+        $the_result_array = self::find_this_query("SELECT * FROM users WHERE id = $user_id");
+
+        if(!empty($the_result_array)){
+           $first_item =  array_shift($the_result_array);
+        }else{
+            return false;
+        }
+        return $first_item;
+
+        return !empty($the_result_array) ? array_shift($the_result_array) : false;    /* ternary operator, same as above */
 
     }
 
@@ -48,7 +55,7 @@ class User
         $the_object->first_name = $found_user['first_name'];
         $the_object->last_name = $found_user['last_name'];
  */
-     foreach($the_record as $the_attribute=>$value){
+     foreach($the_record as $the_attribute=>$value){                 /* loops through this table, we get key and value out */
          if($the_object->has_the_attribute($the_attribute)){
             $the_object->$the_attribute = $value;
          }
