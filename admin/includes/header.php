@@ -1,5 +1,5 @@
 <?php ob_start();  ?>   <!--  ob_start creates outout buffer -->
-<?php include("init.php");  ?>
+<?php require_once("init.php");  ?>
 
 
 <!DOCTYPE html>
