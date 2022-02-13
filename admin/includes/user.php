@@ -16,6 +16,8 @@ class User
        return self::find_this_query("SELECT * From users");
     }
 
+   
+   
     public static function find_user_by_id($user_id)
    
     {
@@ -30,10 +32,13 @@ class User
         }
         return $first_item;
 
-        return !empty($the_result_array) ? array_shift($the_result_array) : false;    /* ternary operator, same as above */
+       /*  return !empty($the_result_array) ? array_shift($the_result_array) : false; */    /* ternary operator, same as above */
 
     }
 
+   
+   
+   
     public static function find_this_query($sql)
     {
         global $database;
