@@ -1,13 +1,7 @@
 <?php ob_start();  ?>   <!--  ob_start creates outout buffer -->
 <?php require_once("init.php");  ?>
 
-<?php
 
-   if(!$session->is_signed_in()){
-    redirect("login.php");
-   }
-
-?>
 
 
 
