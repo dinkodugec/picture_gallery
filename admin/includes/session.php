@@ -4,7 +4,8 @@
 class Session
 {
      private $signed_in = false;
-     public $user_id;
+     public $user_id;    
+     public $message;
 
 
 
@@ -12,7 +13,34 @@ class Session
     {
         session_start();
         $this->check_the_login(); /*  start every time when app start */
+        $this->check_message();
     }
+
+    private function check_message()
+    {
+        if(isset($_SESSION['message'])){
+            $this->messsage = $_SESSION['message'];
+            unset($_SESSION['message']);
+        }else{
+            $this->message = "";
+        }
+
+
+    }
+
+ 
+     public function message()
+     {
+         if(!empty($msg)){
+             $_SESSION['message'] = $msg;
+         }else{
+             return $this->message();
+         }
+     }
+
+
+
+
 
 
     public function is_signed_in()
