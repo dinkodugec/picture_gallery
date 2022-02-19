@@ -52,14 +52,14 @@ public $connection;
 
     public function the_insert_id()
     {
-        return $this->connection->the_insert_id;
+        return mysqli_insert_id($this->connection);
     }
 
 
 }
 
 
-$database = new Database;
+$database = new Database();
 
 
 ?>

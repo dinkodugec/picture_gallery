@@ -7,34 +7,14 @@
             Blank Page
             <small>Subheading</small>
         </h1>
-              <!-- <?php
-              if($database->connection){           /*  if connection is ok */
-                 echo "true";
-              }
-              ?> -->
-   
-             <?php
-             
-               /*  $result_set = User::find_all_users();
-                while($row = mysqli_fetch_array($result_set)){
-                      echo $row['username'] . "<br>";
-                } */
-/* 
-                $found_user = User::find_user_by_id(1);
+              <?php
+                $user = new User();
+                $user->username = "Ljuba";
+                $user->password = "evajuremarin";
+                $user->first_name = "Ljubica";
+                $user->last_name = "Dugec";
 
-                $user = User::instantation($found_user);
-
-                 echo $user->username; */
-/* 
-                 $users = User::find_all_users();
-
-                 foreach($users as $user){
-                     echo $user->username;
-                 } */
-
-                 $found_user = User::find_user_by_id(1);
-                 echo  $found_user->username;
-
+                $user->create();
              ?> 
 
 

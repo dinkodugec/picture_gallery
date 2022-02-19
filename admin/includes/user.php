@@ -90,10 +90,10 @@ class User
 
     public function create()
     {
-        global $databse;
+        global $database;
        
-        $sql = "INSERT INTO users (username, password, first_name, last_name);
-        $sql .= " VALUES('";
+        $sql = "INSERT INTO users (username, password, first_name, last_name)";
+        $sql .= "VALUES('";
         $sql .= $database->escape_string($this->username) . "','";
         $sql .= $database->escape_string($this->password) . "','";
         $sql .= $database->escape_string($this->first_name) . "','";
@@ -109,6 +109,8 @@ class User
         }
         
     }
+
+     
     
 }
 
@@ -117,4 +119,4 @@ class User
 
 
 
-?> <!-- end user class -->
+?> 
