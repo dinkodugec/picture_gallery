@@ -52,8 +52,11 @@ public $connection;
 
     public function the_insert_id()
     {
-        return mysqli_insert_id($this->connection);
+        return mysqli_insert_id($this->connection) ;
     }
+
+
+   
 
 
 }
