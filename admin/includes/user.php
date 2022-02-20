@@ -2,6 +2,7 @@
 
 class User
 {
+    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
     protected static $db_table = "users";
     public $id;
     public $username;
@@ -90,7 +91,13 @@ class User
 
      public function properties()
      {
-        return get_object_vars($this);  //give us back all object properties
+        /* return get_object_vars($this); */  //give us back all object properties
+        $properties = array();
+        foreach(self::$db_table_fields as $db_field){
+            if(property_exists($this,$db_field)){
+                $properties[$db_field] = $this->db_field;
+            }
+        } return $properties;
      }
 
 
