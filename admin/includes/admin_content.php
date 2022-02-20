@@ -16,20 +16,21 @@
 
                 $user->create(); */
 
-           /*    $user = User:: find_user_by_id(1);
-              $user->last_name = "WILLIAMS";
-              $user->update(); */
-/* 
-              $user = User:: find_user_by_id(15);
-              $user->delete();
- */ 
+               $user = User:: find_user_by_id(1);
+              $user->last_name = "Dugec";
+              $user->update(); 
+
+             /*  $user = User:: find_user_by_id(16);
+              $user->delete();  */
+ 
                       /*   $user = User:: find_user_by_id(6);
                         $user->username = "WHATEVER";
                         $user->save(); */
-               $user = new User();
-               $user->username = "USER 2000";
-               $user->save()
-         
+               
+             /*   $user = new User();
+               $user->username = "Fedor del nasi";
+               $user->save() 
+          */
              ?> 
 
 
