@@ -23,12 +23,12 @@ class User extends Db_object
        $username = $database->escape_string($username);
        $password = $database->escape_string( $password);
 
-       $sql = "SELECT * FROM "  . self::$db_table . " WHERE ";
+       $sql = "SELECT * FROM "  . static::$db_table . " WHERE ";
        $sql .= "username = '{$username}' ";
        $sql .= "AND password = '{$password}' ";
        $sql .= "LIMIT 1";
 
-       $the_result_array = self::find_this_query($sql);
+       $the_result_array = static::find_by_query($sql);
 
        return !empty($the_result_array) ? array_shift($the_result_array) : false;   
     }
@@ -43,7 +43,7 @@ class User extends Db_object
      {
         /* return get_object_vars($this); */  //give us back all object properties
         $properties = array();
-        foreach(self::$db_table_fields as $db_field){
+        foreach(static::$db_table_fields as $db_field){
             if(property_exists($this,$db_field)){
                 $properties[$db_field] = $this->$db_field;
             }
@@ -78,7 +78,7 @@ class User extends Db_object
 
         $properties = $this->clean_properties();
        
-        $sql = "INSERT INTO " .self::$db_table . "(" . implode(",",array_keys($properties))           . ")";
+        $sql = "INSERT INTO " .static::$db_table . "(" . implode(",",array_keys($properties))           . ")";
         $sql .= "VALUES('" .  implode("','",array_values($properties)) . "')";
 
 
@@ -103,7 +103,7 @@ class User extends Db_object
             $properties_pairs[] = "{$key}='{$value}'";
         }
 
-        $sql = "UPDATE " .self::$db_table . " SET ";
+        $sql = "UPDATE " .static::$db_table . " SET ";
         $sql .= implode(", ", $properties_pairs);
         $sql .= " WHERE id= " . $database->escape_string($this->id);
 
@@ -118,7 +118,7 @@ class User extends Db_object
     {
         global $database;
 
-        $sql = "DELETE FROM " .self::$db_table . " ";
+        $sql = "DELETE FROM " .static::$db_table . " ";
         $sql .= "WHERE id=" . $database->escape_string($this->id);
         $sql .= " LIMIT 1";
 

@@ -2,12 +2,13 @@
 
 class Db_object
 {
+    protected static $db_table = "users";
 
-
+   
     public static function find_all()
    
     {
-       return self::find_this_query("SELECT * From "  . self::$db_table . " ");
+       return static::find_by_query("SELECT * From "  . static::$db_table . " ");
     }
 
    
@@ -17,20 +18,20 @@ class Db_object
     {
         global $database;
         /* $result_set = $database->query("SELECT * FROM users WHERE id = $user_id"); */
-        $the_result_array = self::find_this_query("SELECT * From "  . self::$db_table . " WHERE id = $user_id");
+        $the_result_array = static::find_by_query("SELECT * From "  . static::$db_table . " WHERE id = $user_id");
 
         return !empty($the_result_array) ? array_shift($the_result_array) : false;   
 
     }
 
     
-    public static function find_this_query($sql)
+    public static function find_by_query($sql)
     {
         global $database;
         $result_set = $database->query($sql);
         $the_object_array = array(); /*   put empty array to get objects in there */
         while($row = mysqli_fetch_array($result_set)){
-            $the_object_array[] = self::instantation($row);
+            $the_object_array[] = static::instantation($row);
         }
         return $the_object_array;
     }
@@ -38,7 +39,9 @@ class Db_object
 
     public static function instantation($the_record) // the record from database
     {
-         $the_object= new self;
+         $calling_class = get_called_class();
+
+         $the_object= new $calling_class;
          /*
         $the_object->id = $found_user['id'];
         $the_object->username = $found_user['username'];
