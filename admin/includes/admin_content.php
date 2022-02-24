@@ -30,14 +30,23 @@
                         $user->username = "WHATEVER";
                         $user->save(); */
                
-               $user = new User();
+             /*   $user = new User();
                $user->username = "york del nasi";
-               $user->save() 
+               $user->save()  */
         
               /*  $users = User::find_all();
                foreach($users as $user){
                    echo $user->username;
                } */
+
+               /*   $photos = Photo::find_all();
+               foreach($photos as $photo){
+                   echo $photo->title;
+               }  */
+
+               $photo = new Photo();
+               $photo->title = "AIAD 2019";
+               $photo->create() ;
 
 
 
@@ -57,3 +66,5 @@
 <!-- /.row -->
 
 </div>
+
+
