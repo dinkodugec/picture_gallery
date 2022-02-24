@@ -30,14 +30,14 @@
                         $user->username = "WHATEVER";
                         $user->save(); */
                
-             /*   $user = new User();
-               $user->username = "Fedor del nasi";
+               $user = new User();
+               $user->username = "york del nasi";
                $user->save() 
-          */
-               $users = User::find_all();
+        
+              /*  $users = User::find_all();
                foreach($users as $user){
                    echo $user->username;
-               }
+               } */
 
 
 

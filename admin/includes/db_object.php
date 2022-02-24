@@ -63,6 +63,103 @@ class Db_object
         return array_key_exists($the_attribute, $object_properties);  /* The array_key_exists() function checks an array for a specified key, and returns true if the key exists and false if the key does not exist. */
     }
 
+    public function properties()
+     {
+        /* return get_object_vars($this); */  //give us back all object properties
+        $properties = array();
+        foreach(static::$db_table_fields as $db_field){
+            if(property_exists($this,$db_field)){
+                $properties[$db_field] = $this->$db_field;
+            }
+        } return $properties;
+     }
+
+    protected function clean_properties()
+     {
+        global $database;
+
+        $clean_properties = array();
+
+        foreach($this->properties() as $key=>$value){
+            $clean_properties[$key] = $database->escape_string($value);
+        }
+          return $clean_properties;
+     }
+
+    
+    
+    public function save()
+    {
+         
+       return isset($this->id) ? $this->update() : $this->create();
+
+    }
+
+
+    public function create()
+    {
+        global $database;
+
+        $properties = $this->clean_properties();
+       
+        $sql = "INSERT INTO " .static::$db_table . "(" . implode(",",array_keys($properties))           . ")";
+        $sql .= "VALUES('" .  implode("','",array_values($properties)) . "')";
+
+
+        if($database->query($sql)){
+   
+                 $this->id = $database->the_insert_id();
+                return true;
+        }else{
+               return false;
+        }
+        
+    } /* finish create method here */
+
+
+    public function update()
+    {
+        global $database;
+        
+        $properties = $this->clean_properties();
+        $properties_pairs = array();
+        foreach($properties as $key => $value){
+            $properties_pairs[] = "{$key}='{$value}'";
+        }
+
+        $sql = "UPDATE " .static::$db_table . " SET ";
+        $sql .= implode(", ", $properties_pairs);
+        $sql .= " WHERE id= " . $database->escape_string($this->id);
+
+        $database->query($sql);
+
+        return (mysqli_affected_rows($database->connection) ==1) ? true : false;
+    }    //end update method
+    
+
+    
+    public function delete()
+    {
+        global $database;
+
+        $sql = "DELETE FROM " .static::$db_table . " ";
+        $sql .= "WHERE id=" . $database->escape_string($this->id);
+        $sql .= " LIMIT 1";
+
+        $database->query($sql);
+
+        return (mysqli_affected_rows($database->connection) ==1) ? true : false;
+
+    }
+
+    
+
+
+
+}  
+
+
+
 
     
     
@@ -70,7 +167,7 @@ class Db_object
 
 
 
-}
+
 
 
 
