@@ -1,7 +1,7 @@
 <?php
 
 
-defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR); 
+defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);  //The defined() function checks whether a constant exists.
 
 defined('SITE_ROOT') ? null : define('SITE_ROOT', DS . 'XAMPP' . DS . 'htdocs' . DS . 'gallery');
 
