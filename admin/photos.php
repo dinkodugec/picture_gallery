@@ -1,5 +1,16 @@
 <?php include("includes/header.php"); ?>
 
+
+<!-- if is not log in -->
+<?php if(!$session->is_signed_in()) {redirect("login.php");} ?>  
+
+
+<?php
+
+$photos = Photo::find_all(); /* this will return array of objects */
+
+?>
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -36,13 +47,20 @@
                                        </tr>
                                    </thead>
                                    <tbody>
+                                     
+                                    <?php foreach ($photos as $photo) : ?>
+
                                        <tr>
-                                           <td></td>
-                                           <td></td>
-                                           <td></td>
-                                           <td></td>
-                                           <td></td>
+                                           <td><img src="http://placehold.it/62x62" alt=""></td>
+                                           <td><?php echo $photo->id; ?></td>
+                                           <td><?php echo $photo-> filename; ?></td>
+                                           <td><?php echo $photo->title;?></td>
+                                           <td><?php echo $photo->size; ?></td>
                                        </tr>
+
+                                     <?php endforeach; ?>
+
+
                                    </tbody>
                                </table> 
                                 <!-- end of table -->
