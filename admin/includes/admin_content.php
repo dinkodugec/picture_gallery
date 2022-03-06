@@ -48,7 +48,7 @@
                $photo->title = "AIAD 2019";
                $photo->create() ;
  */
-              echo INCLUDES_PATH;
+             
 
              ?> 
 
