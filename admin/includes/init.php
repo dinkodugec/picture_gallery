@@ -3,9 +3,12 @@
 
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);  //The defined() function checks whether a constant exists.
 
-defined('SITE_ROOT') ? null : define('SITE_ROOT', DS . 'XAMPP' . DS . 'htdocs' . DS . 'gallery');
+define('SITE_ROOT',__DIR__.DS.'..'.DS.'..');
 
-defined('INCLUDES_PATH') ? null : define('INCLUDES_PATH', SITE_ROOT.DS.'admin'.DS.'includes');
+
+/* defined('SITE_ROOT') ? null : define('SITE_ROOT', DS . 'XAMPP' . DS . 'htdocs' . DS . 'gallery');
+
+defined('INCLUDES_PATH') ? null : define('INCLUDES_PATH', SITE_ROOT.DS.'admin'.DS.'includes'); */
 
 require_once("functions.php");
 require_once("new_config.php");

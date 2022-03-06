@@ -14,8 +14,8 @@ class Photo extends Db_object
     public $size;
 
     public $tmp_path;
-    public $upload_directory = "image";
-    public $errors = array();
+    public $upload_directory = "images";
+    public $errors = [];
     public $upload_errors_arrays = array(
 
         UPLOAD_ERR_OK => "There is no error.",
@@ -62,6 +62,7 @@ class Photo extends Db_object
                return false;
            }
            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
+
            if(file_exists($target_path)){
                $this->errors[] = "the file {$this->filename} allready exists";
                return false;
