@@ -4,7 +4,7 @@
 class Session
 {
      private $signed_in = false;
-     public $user_id;    
+     public $id;    
      public $message;
 
 

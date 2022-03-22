@@ -13,12 +13,12 @@ class Db_object
 
    
    
-    public static function find_by_id($user_id)
+    public static function find_by_id($id)
    
     {
         global $database;
-        /* $result_set = $database->query("SELECT * FROM users WHERE id = $user_id"); */
-        $the_result_array = static::find_by_query("SELECT * From "  . static::$db_table . " WHERE id = $user_id");
+        /* $result_set = $database->query("SELECT * FROM users WHERE id = $id"); */
+        $the_result_array = static::find_by_query("SELECT * From "  . static::$db_table . " WHERE id = $id");
 
         return !empty($the_result_array) ? array_shift($the_result_array) : false;   
 

@@ -8,6 +8,13 @@
             <small>Subheading</small>
         </h1>
               <?php
+
+           /*   $user = User:: find_by_id(1);
+             echo $user->username; */
+
+             $photo = Photo::find_by_id(3);
+             echo $photo->filename;
+            
                  /*  $user = new User();
                 $user->username = "Kikki di perlanera";
                 $user->password = "evajuremarin";
