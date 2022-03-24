@@ -15,10 +15,10 @@ if(empty($_GET['id'])){
 
 if(isset($_POST['update'])){
     if($photo){
-       $_POST['title'];
-       $_POST['caption'];
-       $_POST['alternate_text'];
-       $_POST['description'];   //this data is comming from the form
+       $photo->title=$_POST['title'];
+       $photo->caption=$_POST['caption'];
+       $photo->alternate_text=$_POST['alternate_text'];
+       $photo->description=$_POST['description'];   //this data is comming from the form
     }
 }
 // $photos = Photo::find_all(); /* this will return array of objects */
@@ -55,22 +55,22 @@ if(isset($_POST['update'])){
                           
                             <div class="col-md-8"> 
                                <div class="form-group">
-                                 <input type="text" name="title" class="form-control">
+                                 <input type="text" name="title" value="<?php echo $photo->title; ?>" class="form-control">
                                </div>
 
                                <div class="form-group">
                                  <label for="caption">Caption</label>
-                                 <input type="text" name="caption" class="form-control">
+                                 <input type="text" name="caption" value="<?php echo $photo->caption; ?>" class="form-control">
                                </div>
 
                                <div class="form-group">
                                <label for="caption">Alternate Text</label>
-                                 <input type="text" name="alternate_text" class="form-control">
+                                 <input type="text" name="alternate_text" value="<?php echo $photo->alternate_text; ?>" class="form-control">
                                </div>
 
                                <div class="form-group">
                                <label for="caption">Description</label>
-                               <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
+                               <textarea class="form-control" name="description" value="<?php echo $photo->description; ?>" id="" cols="30" rows="10"></textarea>
                                </div>
                              </div>
 
