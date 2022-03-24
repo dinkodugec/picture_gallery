@@ -7,8 +7,19 @@
 
 <?php
 
+if(empty($_GET['id'])){
+  redirect("photos.php");
+}else{
+  $photo = Photo::find_by_id($_GET['id']);
+}
+
 if(isset($_POST['update'])){
-  echo "Yes, It works";
+    if($photo){
+       $_POST['title'];
+       $_POST['caption'];
+       $_POST['alternate_text'];
+       $_POST['description'];   //this data is comming from the form
+    }
 }
 // $photos = Photo::find_all(); /* this will return array of objects */
 
