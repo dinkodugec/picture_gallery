@@ -19,7 +19,10 @@ if(isset($_POST['update'])){
        $photo->caption=$_POST['caption'];
        $photo->alternate_text=$_POST['alternate_text'];
        $photo->description=$_POST['description'];   //this data is comming from the form
-    }
+   
+       $photo->save();
+   
+      }
 }
 // $photos = Photo::find_all(); /* this will return array of objects */
 
@@ -70,7 +73,7 @@ if(isset($_POST['update'])){
 
                                <div class="form-group">
                                <label for="caption">Description</label>
-                               <textarea class="form-control" name="description" value="<?php echo $photo->description; ?>" id="" cols="30" rows="10"></textarea>
+                               <textarea class="form-control" name="description" id="" cols="30" rows="10"> value="<?php echo $photo->description; ?>"</textarea>
                                </div>
                              </div>
 
