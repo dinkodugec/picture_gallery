@@ -58,7 +58,7 @@ if(isset($_POST['update'])){
                           
                             <div class="col-md-8"> 
                                <div class="form-group">
-                                 <input type="text" name="title" value="<?php echo $photo->title; ?>" class="form-control">
+                                 <a class="thumbnail" href="#"><img src="<?php echo $photo->picture_path(); ?>" alt=""></a>
                                </div>
 
                                <div class="form-group">
