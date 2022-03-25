@@ -51,7 +51,7 @@ $photos = Photo::find_all(); /* this will return array of objects */
                                     <?php foreach ($photos as $photo) : ?>
 
                                        <tr>
-                                           <td><img src="<?php echo $photo->picture_path(); ?>" alt="">
+                                           <td><img class="admin-photo-thumbnail" src="<?php echo $photo->picture_path(); ?>" alt="">
                                             
                                            <div class="pictures_link">
                                                 <a href="delete_photo.php?id=<?php echo $photo->id;?>">Delete</a>
