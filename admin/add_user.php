@@ -7,19 +7,19 @@
 
 <?php
 
-/* $user = User::find_by_id($_GET['id']);
+// $user = User::find_by_id($_GET['id']);
 
-if(isset($_POST['update'])){
-    if($user){
+if(isset($_POST['create'])){
+   /*  if($user){
        $user->title=$_POST['title'];
        $user->caption=$_POST['caption'];
        $user->alternate_text=$_POST['alternate_text'];
        $user->description=$_POST['description'];   //this data is comming from the form
    
        $user->save();
-   
-      }
-} */
+      
+      } */ echo "Heloo";
+}
 // $users = User::find_all(); /* this will return array of objects */
 
 
@@ -51,7 +51,7 @@ if(isset($_POST['update'])){
                            
                            <form action="" method="post" enctype="multipart/form-data">
 
-                          <div class="col-md-8"> 
+                          <div class="col-md-6 col-md-offset-3"> 
                               
 
                                <div class="form-group">
@@ -72,6 +72,10 @@ if(isset($_POST['update'])){
                                <div class="form-group">
                                <label for="password">Password</label>
                                  <input type="text" name="password" class="form-control">
+                               </div>
+
+                               <div class="form-group">
+                                 <input type="submit" name="create" class="btn btn-primary pull-right">
                                </div>
 
                              
