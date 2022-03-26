@@ -7,18 +7,17 @@
 
 <?php
 
-// $user = User::find_by_id($_GET['id']);
+ $user = new User();
 
 if(isset($_POST['create'])){
-   /*  if($user){
-       $user->title=$_POST['title'];
-       $user->caption=$_POST['caption'];
-       $user->alternate_text=$_POST['alternate_text'];
-       $user->description=$_POST['description'];   //this data is comming from the form
-   
-       $user->save();
-      
-      } */ echo "Heloo";
+  
+       if($user){
+        echo  $user->username = $_POST['username'];
+         $user->first_name =$_POST['first_name'];
+         $user->last_name =$_POST['last_name'];
+         $user->password =$_POST['password'];
+         }
+
 }
 // $users = User::find_all(); /* this will return array of objects */
 
@@ -53,6 +52,10 @@ if(isset($_POST['create'])){
 
                           <div class="col-md-6 col-md-offset-3"> 
                               
+                               <div class="form-group">
+                                
+                                 <input type="file" name="user_image" >
+                               </div>
 
                                <div class="form-group">
                                  <label for="username">Username</label>
