@@ -12,12 +12,14 @@
 if(isset($_POST['create'])){
   
        if($user){
-        echo  $user->username = $_POST['username'];
+         $user->username = $_POST['username'];
          $user->first_name =$_POST['first_name'];
          $user->last_name =$_POST['last_name'];
          $user->password =$_POST['password'];
          }
+         $user->set_file($_FILES['user_image']);
 
+         $user->save();
 }
 // $users = User::find_all(); /* this will return array of objects */
 
@@ -74,7 +76,7 @@ if(isset($_POST['create'])){
 
                                <div class="form-group">
                                <label for="password">Password</label>
-                                 <input type="text" name="password" class="form-control">
+                                 <input type="password" name="password" class="form-control">
                                </div>
 
                                <div class="form-group">
