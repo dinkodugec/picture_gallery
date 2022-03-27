@@ -7,6 +7,7 @@
 
 <?php
 
+
 $users = User::find_all(); /* this will return array of objects */
 
 ?>
@@ -58,7 +59,7 @@ $users = User::find_all(); /* this will return array of objects */
                                            <div class="actions_link">
                                                 <a href="delete_user.php?id=<?php echo $user->id;?>">Delete</a>
                                                 <a href="edit_user.php?id=<?php echo $user->id;?>">Edit</a>
-                                                <a href="">View</a>
+                                                
                                             </div>
                                            </td>
                                          
