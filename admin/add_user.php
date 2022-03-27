@@ -19,7 +19,7 @@ if(isset($_POST['create'])){
          }
          $user->set_file($_FILES['user_image']);
 
-         $user->save();
+         $user->save_user_and_image();
 }
 // $users = User::find_all(); /* this will return array of objects */
 
