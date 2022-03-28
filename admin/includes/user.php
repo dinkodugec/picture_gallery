@@ -35,9 +35,9 @@ class User extends Db_object
 
   public function save_user_and_image()
   {
-      if($this->id){
+     /*  if($this->id){
           $this->update();
-      }else{
+      }else{ */
          if(!empty($this->errors)){
              return false;   //if we have errors
          }
@@ -62,7 +62,7 @@ class User extends Db_object
              return false;
          }
 
-        }
+        
 
   }
 

@@ -20,10 +20,21 @@ if(isset($_POST['update'])){
          $user->first_name =$_POST['first_name'];
          $user->last_name =$_POST['last_name'];
          $user->password =$_POST['password'];
-         }
-         $user->set_file($_FILES['user_image']);
+        
+         if(empty($_FILES['user_image'])){
+            $user->save();
+         }else{
+          $user->set_file($_FILES['user_image']);
+          $user->save_user_and_image();
+          $user->save();
 
-         $user->save_user_and_image();
+          redirect("edit_user.php?id={$user->id}");
+         }
+        
+
+         
+}
+
 }
 // $users = User::find_all(); /* this will return array of objects */
 

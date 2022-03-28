@@ -4,7 +4,7 @@ class Db_object
 {
     protected static $db_table = "users";
 
-    public $upload_errors_arrays = array(
+    /* public $upload_errors_arrays = array(
 
         UPLOAD_ERR_OK => "There is no error.",
         UPLOAD_ERR_INI_SIZE => "The upload file exceeds the upload_max_filesize directive.",
@@ -15,7 +15,7 @@ class Db_object
         UPLOAD_ERR_CANT_WRITE => "Failed to write file to disk.",
         UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
     );
-
+ */
 
     public static function find_all()
    
