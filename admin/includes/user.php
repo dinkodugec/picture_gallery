@@ -13,7 +13,7 @@ class User extends Db_object
     public  $upload_directory = "images";
     public $image_placeholder = "http://placehold.it/400x400&text=image";
 
-
+/* 
     public function set_file($file)
     //basename() Return user_image from the specified path:
   {
@@ -31,7 +31,7 @@ class User extends Db_object
        }
 
   }
-
+ */
 
   public function save_user_and_image()
   {

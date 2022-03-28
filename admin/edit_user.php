@@ -97,9 +97,15 @@ if(isset($_POST['update'])){
                                  <input type="password" name="password" class="form-control" value="<?php $user->password;?>">
                                </div>
 
+                               <a class="btn btn-danger" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
+
                                <div class="form-group">
                                  <input type="submit" name="update" class="btn btn-primary pull-right" value="Update">
                                </div>
+
+                               <!-- <div class="form-group">
+                                 <input type="submit" name="delete" class="btn btn-primary pull-left" value="Delete">
+                               </div> -->
 
                              
                              </div>
