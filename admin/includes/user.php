@@ -33,7 +33,7 @@ class User extends Db_object
   }
  */
 
-  public function save_user_and_image()
+  public function upload_photo()
   {
      /*  if($this->id){
           $this->update();
@@ -53,10 +53,10 @@ class User extends Db_object
          }    // move_uploaded_file()
 
          if(move_uploaded_file($this->tmp_path, $target_path)){
-             if($this->create()){
+            
                  unset($this->tmp_path);
                  return true;
-             }
+             
          }else{
              $this->errors[] = "The file directory does not have permission";
              return false;
