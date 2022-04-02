@@ -6,7 +6,6 @@ if(empty($_GET['id'])){
     redirect("index.php");
 }
     
-
     $photo = Photo::find_by_id($_GET['id']);
             /*  JUST TO SEE IF WORKS OBJECTS */
          /*  echo $photo->title; */
@@ -15,8 +14,9 @@ if(empty($_GET['id'])){
         $author=trim($_POST['author']);
         $body=trim($_POST['body']);
         $new_comment = Comment::create_comment($photo->id, $author, $body);   
+        
      
-        if($new_comment && $new_comment->save()){
+         if($new_comment && $new_comment->save()){
             redirect("photo.php?id={$photo->id}");
         }else{
             $message = "There was problem saving";
@@ -24,11 +24,12 @@ if(empty($_GET['id'])){
         
      }else{
          $author = "";
-         $body= "";
+         $body= ""; 
      } 
+ 
+    
 
-
-      Comment::find_the_comments($photo->id); 
+     $comments =  Comment::find_the_comments($photo->id); 
 
 ?>
 
@@ -157,20 +158,20 @@ if(empty($_GET['id'])){
 
                 <!-- Comment -->
 
-
+                <?php foreach ($comments as $comment): ?>
 
                 <div class="media">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <h4 class="media-heading"><?php echo $comment->author; ?></h4>
+                         <?php echo $comment->body; ?>
+                       
                     </div>
                 </div>
 
+                <?php endforeach; ?>
                 
 
                 <!-- Comment -->
