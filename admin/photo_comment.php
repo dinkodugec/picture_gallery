@@ -7,7 +7,12 @@
 
 <?php
 
-$photos = Photo::find_all(); /* this will return array of objects */
+
+if(empty($_GET['id'])){
+  redirect("photos.php");
+}
+
+$comments = Comment::find_the_comments($_GET['id']);
 
 ?>
 
@@ -31,39 +36,35 @@ $photos = Photo::find_all(); /* this will return array of objects */
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                               Photos
-                                <small>Subheading</small>
+                               Users
+                             
                             </h1>
+                            <a href="add_user.php" class="btn btn-primary">Add User</a>
                            
                            <div class="col-md-12">
                                <table class="table table-hover">
                                    <thead>
                                        <tr>
-                                           <th>Photo</th>
-                                           <th>Id</th>
-                                           <th>File Name</th>
-                                           <th>Title</th>
-                                           <th>Size</th>
+                                           <th>ID</th>
+                                           <th>Author</th>
+                                           <th>Body</th>
                                        </tr>
                                    </thead>
                                    <tbody>
                                      
-                                    <?php foreach ($photos as $photo) : ?>
+                                    <?php foreach ($comments as $comment) : ?>
 
                                        <tr>
-                                           <td><img class="admin-photo-thumbnail" src="<?php echo $photo->picture_path(); ?>" alt="">
-                                            
-                                           <div class="actions_links">
-                                                <a href="delete_photo.php?id=<?php echo $photo->id;?>">Delete</a>
-                                                <a href="edit_photo.php?id=<?php echo $photo->id;?>">Edit</a>
-                                                <a href="../photo.php?id=<?php echo $photo->id; ?>">View</a>
+                                           <td><?php echo $comment->id; ?></td>
+                                           <td><?php echo $comment->author; ?>
+                                           <div class="actions_link">
+                                                <a href="delete_comment.php?id=<?php echo $comment->id;?>">Delete</a>
                                             </div>
-                                          
                                            </td>
-                                           <td><?php echo $photo->id; ?></td>
-                                           <td><?php echo $photo-> filename; ?></td>
-                                           <td><?php echo $photo->title;?></td>
-                                           <td><?php echo $photo->size; ?></td>
+                                         
+                                          
+                                           <td><?php echo $comment->body;?></td>
+                                          
                                        </tr>
 
                                      <?php endforeach; ?>
