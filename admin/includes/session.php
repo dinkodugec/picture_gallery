@@ -6,14 +6,25 @@ class Session
      private $signed_in = false;
      public $id;    
      public $message;
+     public $count;
 
 
 
     function __construct()
     {
         session_start();
+        $this->visitor_count();
         $this->check_the_login(); /*  start every time when app start */
         $this->check_message();
+    }
+
+    public function visitor_count()
+    {
+        if(isset($_SESSION['count'])){
+            return $this->count = $_SESSION['count']++;
+        }else{
+            return $_SESSION['count'] = 1;
+        }
     }
 
     private function check_message()
